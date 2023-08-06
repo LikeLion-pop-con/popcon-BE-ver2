@@ -66,7 +66,8 @@ urlpatterns = [
     # Swagger url
     re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     re_path(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-    re_path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
+    re_path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),#배포
+    re_path(r'^image/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
 
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # image
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # image  #이게 로컬
 

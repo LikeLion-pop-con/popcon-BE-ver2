@@ -24,6 +24,13 @@ from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, Permis
 #         superuser.save(using=self._db)
         
 #         return superuser
+
+
+# class Region(models.Model):
+#     name= models.CharField(verbose_name='지역',max_length=50)
+#     def __str__(self):
+#         return self.name
+
 class UserManger(BaseUserManager):
     use_in_migrations = True
 
@@ -54,6 +61,7 @@ class UserManger(BaseUserManager):
         
         return superuser
     
+
     
 class User(AbstractBaseUser, PermissionsMixin):
     userID = models.CharField(max_length=50, unique = True,null=True)# 이메일(아이디)
@@ -62,6 +70,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     user_phonenum = models.CharField(verbose_name='전화번호',max_length=50, null=True,default=0)
     
     user_address = models.CharField(verbose_name='주소',max_length=50, null=True,default=0)# 주소(시)
+    #user_address = models.ForeignKey(Region, on_delete=models.CASCADE, null=True)
+
     user_gender = models.IntegerField(verbose_name='성별', null=True,default=0)
 
 

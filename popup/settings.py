@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-_ow=8xg1si44w+lcz@fk*x=xc4q6ld7n$tw4k7*k&8adwqa4&m'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG =True
 
 #ALLOWED_HOSTS = ['popcon.store']
 #ALLOWED_HOSTS = ['*']
