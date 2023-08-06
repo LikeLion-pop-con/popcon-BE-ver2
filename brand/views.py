@@ -7,9 +7,15 @@ from .models import Popup,Brand
 
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.decorators import api_view
+
 from .serializers import PopupSerializer,BrandSerializer
 
+from drf_yasg import openapi 
+from drf_yasg.utils import swagger_auto_schema
+
 class AllPopup_listView(APIView):
+    @swagger_auto_schema(tags=['모든팝업'])
     def get(self,request):
         all_popup_list=Popup.objects.all()
         popuplistSerializer=PopupSerializer(all_popup_list,many=True)
@@ -17,6 +23,7 @@ class AllPopup_listView(APIView):
 
 
 class OpenedPopup_listView(APIView):
+    @swagger_auto_schema(tags=['오픈한팝업'])
     def get(self,request):
         opened_popup_list=Popup.objects.filter(popup_state=1)
         popuplistSerializer=PopupSerializer(opened_popup_list,many=True)
@@ -24,6 +31,7 @@ class OpenedPopup_listView(APIView):
 
 
 class willOpenPopup_listView(APIView):
+    @swagger_auto_schema(tags=['오픈예정팝업'])
     def get(self,request):
         willopen_popup_list=Popup.objects.filter(popup_state=2)
         popuplistSerializer=PopupSerializer(willopen_popup_list,many=True)
@@ -32,6 +40,7 @@ class willOpenPopup_listView(APIView):
 
 
 class SearchView(APIView):
+    @swagger_auto_schema(tags=['검색하고싶은 브랜드,팝업'])
     def get(self, request, search_name):
         # 먼저 popup_name으로 검색해봅니다.
         popups = Popup.objects.filter(popup_name__icontains=search_name)
@@ -52,6 +61,16 @@ class SearchView(APIView):
         
 
 class CategoryPopup_listView(APIView):
+    @swagger_auto_schema(tags=['카테고리별 popup추출main뒤에 1,2,3,4 붙이셈'])
+    # @swagger_auto_schema(tags=['카테고리별 popup추출'], request_body=openapi.Schema(
+    #     type=openapi.TYPE_OBJECT,
+    #     properties={
+    #         'input': openapi.Schema(type=openapi.TYPE_INTEGER, description='input'), 
+    #     },
+    #     required=['input']
+    # ), responses={200: 'Success'})
+
+
     def get(self,request,input):
         if input==1:
             popups=Popup.objects.filter(popup_category=5)#스토어

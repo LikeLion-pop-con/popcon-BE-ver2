@@ -111,6 +111,8 @@ class LogoutView(APIView):
         
         
 class MyInfo(APIView):
+    @swagger_auto_schema(tags=['로그인 상태에서 내 정보 보기'])
+
     def get(self, request):
         user = request.user
 
