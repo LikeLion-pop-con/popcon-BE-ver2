@@ -155,9 +155,6 @@ CSRF_TRUSTED_ORIGINS = (
     'http://13.125.44.159:8000',
     'https://heartgold.store',
     'https://popcon.store',
-
-    #ddd
-    #222
 )
 
 CORS_ALLOW_HEADERS = (
@@ -183,4 +180,3 @@ CORS_ALLOW_HEADERS = (
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-#aaaa
