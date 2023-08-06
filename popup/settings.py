@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-_ow=8xg1si44w+lcz@fk*x=xc4q6ld7n$tw4k7*k&8adwqa4&m'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG =True
+DEBUG =False
 
 #ALLOWED_HOSTS = ['popcon.store']
 #ALLOWED_HOSTS = ['*']
@@ -138,7 +138,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'user.User'
 
 
-#CORS_ALLOW_ALL_ORIGINS = True # cors 오류 
+SECURE_SSL_REDIRECT = True 
+
+CORS_ALLOW_ALL_ORIGINS = False # cors 오류 
 
 CORS_ALLOWED_ORIGINS = [ # 특정 출처만 허용하려면, CORS_ALLOWED_ORIGINS 설정에 허용할 출처 리스트를 추가합니다.
     "https://popcon.store",
