@@ -70,7 +70,6 @@ class CategoryPopup_listView(APIView):
     #     required=['input']
     # ), responses={200: 'Success'})
 
-
     def get(self,request,input):
         if input==1:
             popups=Popup.objects.filter(popup_category=5)#스토어
@@ -88,3 +87,7 @@ class CategoryPopup_listView(APIView):
             popups=Popup.objects.filter(popup_category=8)#클래스
             popuplistSerializer=PopupSerializer(popups,many=True)
             return Response(popuplistSerializer.data,status=200)
+        
+# class BrandLikeView(APIView):
+#     def post(self,request):
+#         Brand=Brand
